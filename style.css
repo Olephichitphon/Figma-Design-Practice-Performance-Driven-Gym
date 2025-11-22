@@ -40,3 +40,13 @@ a {
     text-decoration: none; 
     color: var(--text-color-dark);
 }
+/* --- 2. HEADER CONTAINER (ใช้ Flexbox หลัก) --- */
+.main-header {
+    background-color: var(--cta-color); /* พื้นหลัง Navbar */
+    padding: 15px 0; /* เว้นระยะห่างด้านบน/ล่าง */
+}
+.nav-container {
+    display: flex;
+    align-items:center; /* จัดกึ่งกลางแนวตั้ง */
+    justify-content: space-between; /* กระจายระยะห่างระหว่างโลโก้กับเมนู */
+}
