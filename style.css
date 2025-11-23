@@ -151,6 +151,9 @@ a {
   transform: translate(0, -11px) rotate(45deg);
 }
 /* ---------------------------------------------------- */
+.menu-active{
+    display: block !important;
+}
 @media (max-width: 768px) {
     .nav-wrapper{
         display: none;
@@ -160,4 +163,4 @@ a {
     .ham-menu{
         display: none;
     }
-}
+} 
