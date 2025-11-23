@@ -165,12 +165,26 @@ a {
     }
    .nav-links{
     flex-direction: column;
+    padding: 40px 20px  15px 20px;
+    gap: 5px;
    }
-   
+   .nav-links li a{
+    padding: 5px 0;
+   }
+   .nav-container {
+    display: flex;
+   /* 💥 แก้ไข: จัดเนื้อหาเมนูให้ชิดซ้าย (แนวขวาง) */
+    align-items: flex-start;
+    justify-content: flex-start; /* กระจายระยะห่างระหว่างโลโก้กับเมนู */
+    flex-direction: column;
+    }
+    .nav-btn {
+      padding: 0 20px 20px 15px;
+    }
 }
 @media (min-width: 768px) {
     .ham-menu{
-        display: none;
+        display: none
     }
     
 } 
