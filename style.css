@@ -123,3 +123,19 @@ a {
     height: 30px; /* กำหนดความสูงของโลโก้ */
     vertical-align: middle;
 }
+/* --- A. การตั้งค่าเริ่มต้นสำหรับ Hamburger Icon --- */
+/* ---------------------------------------------------- */
+/* ซ่อนไอคอนบนมุมมอง Desktop */
+.hamburger-icon {
+    display: none; 
+    cursor: pointer;
+}
+
+.hamburger-icon .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
+}
