@@ -403,8 +403,6 @@ a {
 }
 
 /*เพิ่มเส้นขอบให้กับ Grid Items ทั้งหมด */
-
-
 .card1, 
 .card2, 
 .card3, 
@@ -412,4 +410,47 @@ a {
 .img2 {
     /* ✅ แก้ไข: ใช้ comma (,) เพื่อเลือกหลายคลาสพร้อมกัน */
     border: 1px solid var(--text-color-dark); /* ใช้สีดำ/เข้มตามที่เคยใช้ */
+}
+/* ---------------------------------------------------- */
+/* Media Query - Mobile Grid Layout (<= 799px) */
+@media (max-width: 799px) {
+    .main-container {
+        /* ✅ เปลี่ยนเป็น 1 คอลัมน์ */
+        grid-template-columns: 1fr;  
+    }
+    /* ยกเลิกการกินพื้นที่หลายคอลัมน์ */
+    .img1, .card1, .card2, .card3, .img2 {
+        grid-column: 1 / span 1; 
+    }
+    /* ✅ กำหนดลำดับใหม่ด้วย 'order' */
+    
+    /* 1. img1: รูปภาพหลัก */
+    .img1 {
+        order: 1;
+    }
+
+    /* 2. card1: FOR THE COMMITTED */
+    .card1 {
+        order: 2;
+        /* ยกเลิก height: 100% เพื่อให้ card ย่อ/ขยายตามเนื้อหาใน Mobile */
+        height: auto; 
+        padding: 20px; /* ลด padding ภายใน Card */
+    }
+    
+    /* 3. img2: รูปภาพ 2 */
+    .img2 {
+        order: 3;
+    }
+
+    /* 4. card2: GUIDED BY EXPERTS */
+    .card2 {
+        order: 4;
+        padding: 20px; /* ลบ padding ขวาที่เคยกำหนดใน Desktop */
+    }
+
+    /* 5. card3: DYNAMIC OPEN GYM */
+    .card3 {
+        order: 5;
+        padding: 20px; /* ลบ padding ซ้ายที่เคยกำหนดใน Desktop */
+    }
 }
