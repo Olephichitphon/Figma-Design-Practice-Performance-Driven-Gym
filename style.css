@@ -647,3 +647,17 @@ a {
 .cta-primal-tribe .btn-primary:hover {
     background-color: var(--background-light); /* สีเทาอ่อนๆ เมื่อ Hover */
 }
+
+@media (max-width: 799px) {
+    .cta-primal-tribe {
+        min-height: 300px;
+    }
+    
+    .cta-primal-tribe h2 {
+        font-size: 2.2em; /* ลดขนาดฟอนต์ให้เล็กลงใน Mobile */
+    }
+    
+    .cta-primal-tribe .btn-primary {
+        padding: 12px 25px;
+    }
+}
