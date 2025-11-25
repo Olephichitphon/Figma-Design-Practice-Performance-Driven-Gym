@@ -572,3 +572,78 @@ a {
         order: -1; /* ย้ายรูปภาพขึ้นไปด้านบน */
     }
 }
+
+/* -------------------------------------------..........................................................................................--------- */
+/* <section class="cta-primal-tribe">*/
+/* ---------------------------------------------------- */
+/* ---------------------------------------------------- */
+/* Call to Action (CTA) Section */
+/* ---------------------------------------------------- */
+
+.cta-primal-tribe {
+    /* ใช้สีม่วงอ่อนเป็นพื้นหลังเต็มความกว้าง */
+    background-color: var(--cta-color); 
+    color:var( --text-color-dark);/* สีข้อความควรเป็นสีขาว/สว่าง */
+    
+    /* ใช้ Flexbox เพื่อจัดเนื้อหาให้อยู่กึ่งกลาง */
+    display: flex;
+    justify-content: center; /* จัดกึ่งกลางแนวนอน */
+    align-items: center; /* จัดกึ่งกลางแนวตั้ง */
+    
+    /* กำหนดความสูง เพื่อให้มีพื้นที่รอบข้อความเยอะๆ */
+    min-height: 400px; 
+    
+    text-align: center;
+    padding: 60px 20px; /* Padding เผื่อสำหรับจอแคบ */
+}
+
+.cta-content-wrap {
+    /* จำกัดความกว้างเนื้อหา */
+   
+    width: 100%;
+}
+
+/* ---------------------------------------------------- */
+/* 11. Typography Styles */
+/* ---------------------------------------------------- */
+
+.cta-primal-tribe .subtitle {
+    font-size: 0.9em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.cta-primal-tribe h2 {
+    font-size: 3.5em; /* ข้อความหลัก */
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+/* ---------------------------------------------------- */
+/* 11. Button Styles */
+/* ---------------------------------------------------- */
+
+.cta-primal-tribe .btn-primary {
+    display: inline-block;
+    padding: 15px 30px;
+    
+    /* สไตล์ปุ่มกลับกัน: พื้นหลังขาว, ข้อความสีเข้ม */
+    background-color: #FFFFFF; 
+    color: var(--text-color-dark); /* ใช้สีดำ/เข้ม */
+    
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.cta-primal-tribe .btn-primary:hover {
+    background-color: var(--background-light); /* สีเทาอ่อนๆ เมื่อ Hover */
+}
