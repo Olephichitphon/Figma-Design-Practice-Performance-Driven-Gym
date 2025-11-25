@@ -661,3 +661,82 @@ a {
         padding: 12px 25px;
     }
 }
+
+/* -------------------------------------------..........................................................................................--------- */
+/* E.<footer>*/
+/* ---------------------------------------------------- */
+.footer-brand{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    
+}
+
+.footer-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.footer-brand{
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    
+}
+
+.footer-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+@media (max-width: 799px) {
+    footer {
+        padding: 40px 15px;
+        /* ✅ เปลี่ยนเป็น 1 คอลัมน์ (แก้ปัญหาการล้นจอ) */
+        grid-template-columns: 1fr; 
+        gap: 30px; /* ✅ เพิ่ม gap ระหว่าง Brand กับ Info */
+    }
+    
+    /* เมื่อเป็น 1 คอลัมน์ องค์ประกอบจะถูกเรียงดังนี้: 
+       1. .footer-brand
+       2. .footer-info (ซึ่งเป็น Flex Container)
+    */
+
+    /* ✅ แก้ไข .footer-info เพื่อจัดเรียง Contact, Hours, Social ในแนวตั้ง */
+    .footer-info {
+       /* ✅ ต้องเปลี่ยนเป็นเรียงแนวตั้ง */
+        flex-direction: column; 
+        gap: 30px; /* ✅ สร้างระยะห่างระหว่าง Contact, Hours, Social */
+        padding: 0;
+       
+    }
+    .footer-brand{
+         display: flex; /* ยืนยันว่าเป็น Flex Container */
+        flex-direction: column; 
+        gap: 10px; /* ใช้ 10px น่าจะเหมาะสมกว่า 30px สำหรับระยะห่างโลโก้/ชื่อ */
+        padding: 0;
+        
+        /* ✅ แก้ไข 1: สั่งให้ Flex Items (โลโก้และชื่อ) ชิดซ้ายของ .footer-brand */
+        align-items: flex-start; /* นี่คือตัวสั่งให้องค์ประกอบย่อยชิดซ้าย */
+        
+        /* ✅ แก้ไข 2: ลบ text-align: left; ออก (ใช้ align-items แทน) */
+        /* text-align: left; */
+    }
+    /* แก้ไขการจัดวางภายใน .footer-info */
+    .contact-col, .hours-col, .footer-social {
+        /* ลบ flex-basis ออกเพื่อให้ยืดเต็ม 100% ใน Mobile */
+        flex-basis: auto; 
+        text-align: left; /* จัดชิดซ้ายทั้งหมด */
+    }
+
+    /* สร้างระยะห่างระหว่าง Contact และ Hours ในแนวตั้ง */
+    .contact-col {
+        margin-bottom: 20px; 
+    }
+}
