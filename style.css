@@ -239,3 +239,177 @@ a {
         display: block; 
     }
 }
+
+/* -------------------------------------------..........................................................................................--------- */
+/* main-container*/
+/* ---------------------------------------------------- */
+.main-container {
+    /* ใช้ CSS Grid ในการจัดวาง */
+    display: grid;
+    /* จำกัดความกว้างเนื้อหาให้อยู่ในขอบเขตเดียวกับ Navbar/Hero Heading */
+    width: 100%;
+    margin: 0 auto;
+    /* ✅ แก้ไข: กำหนด Layout เป็น 3 คอลัมน์ที่กว้างเท่ากันทั้งหมด */
+    grid-template-columns: repeat(3, 1fr); 
+    /* หรือใช้: grid-template-columns: 1fr 1fr 1fr; */
+    /* Padding ซ้าย/ขวา เพื่อไม่ให้เนื้อหาชิดขอบจอ */
+    padding: 0 ; 
+}
+.img1 {
+    /* ขยายเต็มคอลัมน์ 1 และ 2 */
+    grid-column: 1 / span 2; 
+}
+/* ✅ โค้ดสำหรับจัดรูปภาพให้เต็มพื้นที่ */
+.img1 img {
+    width: 100%; /* ขยายความกว้างเต็มองค์ประกอบแม่ (.img1) */
+    height: 100%; /* ขยายความสูงเต็มองค์ประกอบแม่ (.img1) */
+    display: block;
+    /* ป้องกันรูปภาพบิดเบือนและมั่นใจว่าครอบคลุมพื้นที่ทั้งหมด */
+    object-fit: cover;
+}
+/* 2. Card 1 (FOR THE COMMITTED) - คอลัมน์ที่ 3 */
+.card1 {
+    grid-column: 3;
+    /* ✅ ใช้ Flexbox เพื่อจัดการการจัดวางภายใน Card */
+    display: flex;
+    flex-direction: column; /* จัดเรียงในแนวตั้ง */
+    /* ❌ เนื่องจากไม่มีความสูงคงที่ (height: 100%) การใช้ space-between 
+       อาจไม่เกิดผล หากไม่กำหนดความสูงของ card1 */
+    /* ถ้าต้องการให้ h1 อยู่บนสุดและข้อความอยู่ล่างสุด:
+       ต้องมั่นใจว่า .card1 ยืดเต็มความสูงของแถว Grid */
+    /* ให้กำหนดความสูงเป็น 100% */
+    height: 100%; 
+    padding: 20px;
+}
+.card1 h1 {
+    margin-top: 0;
+    /* ✅ ใช้ margin-bottom: auto; เพื่อดันองค์ประกอบถัดไปลงไปด้านล่าง */
+    margin-bottom: auto; 
+    
+    font-size: 2em;
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: uppercase;
+    /* ...โค้ดอื่นๆ... */
+}
+.card1 p {
+    /* ✅ ลด margin-bottom ของ p ให้เหลือ 10px (หรือ 0px ถ้าต้องการให้ชิดมาก) */
+    margin-bottom: 10px; 
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+.card1 a {
+    /* ทำให้ลิงก์แสดงผลแบบ inline-block เพื่อให้ควบคุม margin ได้ง่ายขึ้น */
+    display: inline-block; 
+    /* ✅ ลบ margin-top (ถ้ามี) */
+    margin-top: 0;
+    
+    font-weight: bold;
+    color: var(--cta-color); 
+    text-decoration: none; 
+    text-transform: uppercase;
+    padding-bottom:20px ;
+    /* ✅ เพิ่ม Transition ให้การเปลี่ยนสี/สไตล์ดูนุ่มนวลขึ้น */
+    transition: color 0.2s ease-in-out;
+}
+/*  Hover Effect สำหรับลิงก์ใน Card 1 */
+.card1 a:hover {
+    /* ✅ 1. เพิ่มขีดเส้นใต้เมื่อ Hover (ตามภาพตัวอย่างมักจะไม่มีขีดเส้นใต้ในสถานะปกติ) */
+    text-decoration: underline; 
+    
+    /* ✅ 2. อาจเปลี่ยนสีให้เข้มขึ้นเล็กน้อยเพื่อให้เกิดความแตกต่าง */
+    color: var(--text-color-dark); /* เปลี่ยนเป็นสีดำ/เข้ม */
+    
+    /* 3. (ทางเลือก) เพิ่ม transition เพื่อให้การเปลี่ยนสี/สไตล์ราบรื่น */
+    transition: color 0.2s ease-in-out;
+}
+
+/* 3. Card 2 (GUIDED BY EXPERTS) - คอลัมน์ที่ 1, แถวล่าง */
+.card2 {
+    grid-column: 1;
+   /* ✅ ใช้ Flexbox เพื่อจัดการการจัดวางภายใน Card */
+    display: flex;
+    flex-direction: column; /* จัดเรียงในแนวตั้ง */
+    /* ❌ เนื่องจากไม่มีความสูงคงที่ (height: 100%) การใช้ space-between 
+       อาจไม่เกิดผล หากไม่กำหนดความสูงของ card2 */
+    /* ถ้าต้องการให้ h1 อยู่บนสุดและข้อความอยู่ล่างสุด:
+       ต้องมั่นใจว่า .card2 ยืดเต็มความสูงของแถว Grid */
+    /* ให้กำหนดความสูงเป็น 100% */
+    height: 100%; 
+    padding: 20px;
+}
+.card2 h1 {
+    margin-top: 0;
+    /* ✅ ใช้ margin-bottom: auto; เพื่อดันองค์ประกอบถัดไปลงไปด้านล่าง */
+    margin-bottom: auto; 
+    
+    font-size: 2em;
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: uppercase;
+    /* ...โค้ดอื่นๆ... */
+}
+.card2 p {
+    /* ✅ ลด margin-bottom ของ p ให้เหลือ 10px (หรือ 0px ถ้าต้องการให้ชิดมาก) */
+    margin-bottom: 10px; 
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/* 4. Card 3 (DYNAMIC OPEN GYM) - คอลัมน์ที่ 2, แถวล่าง */
+.card3 {
+    grid-column: 2;
+    /* ✅ ใช้ Flexbox เพื่อจัดการการจัดวางภายใน Card */
+    display: flex;
+    flex-direction: column; /* จัดเรียงในแนวตั้ง */
+    /* ❌ เนื่องจากไม่มีความสูงคงที่ (height: 100%) การใช้ space-between 
+       อาจไม่เกิดผล หากไม่กำหนดความสูงของ card3 */
+    /* ถ้าต้องการให้ h1 อยู่บนสุดและข้อความอยู่ล่างสุด:
+       ต้องมั่นใจว่า .card3 ยืดเต็มความสูงของแถว Grid */
+    /* ให้กำหนดความสูงเป็น 100% */
+    height: 100%; 
+    padding: 20px;
+}
+.card3 h1 {
+    margin-top: 0;
+    /* ✅ ใช้ margin-bottom: auto; เพื่อดันองค์ประกอบถัดไปลงไปด้านล่าง */
+    margin-bottom: auto; 
+    
+    font-size: 2em;
+    line-height: 1.1;
+    font-weight: 900;
+    text-transform: uppercase;
+    /* ...โค้ดอื่นๆ... */
+}
+.card3 p {
+    /* ✅ ลด margin-bottom ของ p ให้เหลือ 10px (หรือ 0px ถ้าต้องการให้ชิดมาก) */
+    margin-bottom: 10px; 
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+
+/* 5. รูปภาพ 2 (img2) - คอลัมน์ที่ 3, แถวล่าง */
+.img2 {
+    grid-column: 3;
+}
+.img2 img {
+    width: 100%; /* ขยายความกว้างเต็มองค์ประกอบแม่ (.img2) */
+    height: 100%; /* ขยายความสูงเต็มองค์ประกอบแม่ (.img2) */
+    display: block;
+    /* ป้องกันรูปภาพบิดเบือนและมั่นใจว่าครอบคลุมพื้นที่ทั้งหมด */
+    object-fit: cover;
+}
+
+/*เพิ่มเส้นขอบให้กับ Grid Items ทั้งหมด */
+
+
+.card1, 
+.card2, 
+.card3, 
+.img1, 
+.img2 {
+    /* ✅ แก้ไข: ใช้ comma (,) เพื่อเลือกหลายคลาสพร้อมกัน */
+    border: 1px solid var(--text-color-dark); /* ใช้สีดำ/เข้มตามที่เคยใช้ */
+}
