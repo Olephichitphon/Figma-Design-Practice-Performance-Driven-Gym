@@ -32,6 +32,27 @@ body {
     color: var(--text-color-dark); 
     background-color: var(--text-color-light);
 }
+
+header {
+    /* 💥 1. KEY FIX: ทำให้ Navbar ลอยอยู่เหนือเนื้อหาและค้างอยู่กับที่ */
+    position: fixed; 
+    
+    /* 2. กำหนดตำแหน่งให้ชิดขอบบนและซ้าย */
+    top: 0;
+    left: 0;
+    
+    /* 3. บังคับให้มีความกว้าง 100% ของหน้าจอเสมอ */
+    width: 100%;
+    
+    /* 4. KEY FIX: กำหนด Z-Index ให้สูงมาก */
+    /* สำคัญมาก! เพื่อให้ Navbar อยู่เหนือเนื้อหาอื่นๆ เวลา Scroll */
+    z-index: 1000; 
+    
+    /* เพิ่มการตกแต่งอื่นๆ เช่น เงาและสีพื้นหลัง */
+    background-color: white; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 ul {
     list-style: none; /* เอาเครื่องหมายจุดหน้า li ออก */
 }
