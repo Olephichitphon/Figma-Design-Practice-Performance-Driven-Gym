@@ -563,3 +563,12 @@ a {
 .card5-2 {
     padding: 20px;
 }
+@media (max-width: 799px) {
+    .main-container-2 {
+       grid-template-columns: 1fr;
+    }
+    /* ✅ กำหนดลำดับใหม่ด้วย 'order' */
+    .img3 {
+        order: -1; /* ย้ายรูปภาพขึ้นไปด้านบน */
+    }
+}
