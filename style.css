@@ -898,3 +898,16 @@ a {
     font-weight: 900; 
     font-size: 2.2em;
 }
+/* ---------------------------------------------------- */
+/* CSS สำหรับ Scroll Animation */
+/* ---------------------------------------------------- */
+.grid-item-2, .grid-item-3 {
+    opacity: 0; /* เริ่มต้นซ่อน */
+    transform: translateY(50px); /* เริ่มต้นเลื่อนลง */
+    transition: opacity 1s ease-out, transform 1s ease-out; /* กำหนดความเร็วในการเปลี่ยนสถานะ */
+}
+/* 2. กำหนดสถานะเมื่อคลาส 'visible' ถูกเพิ่ม (แสดง) */
+.grid-item-2.visible, .grid-item-3.visible {
+    opacity: 1; 
+    transform: translateY(0); /* เลื่อนกลับไปตำแหน่งเดิม */
+}
