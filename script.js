@@ -45,3 +45,56 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(element);
     });
 });
+
+/*...............................................................................................*/
+/*โคดJavascript สำหรับโหลด Navbar และ Footer จากไฟล์แยกต่างหาก*/
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ฟังก์ชันสำหรับดึงเนื้อหาจากไฟล์ HTML และแทรกใน Element ที่มี ID
+    function loadHTML(elementId, filePath) {
+        // ใช้ Fetch API เพื่อโหลดเนื้อหาของไฟล์ HTML
+        fetch(filePath)
+            .then(response => {
+                // ตรวจสอบสถานะการตอบกลับ
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(htmlContent => {
+                const placeholder = document.getElementById(elementId);
+                if (placeholder) {
+                    // แทรกโค้ด HTML ที่โหลดมาลงใน Placeholder
+                    placeholder.innerHTML = htmlContent;
+                    
+                    // 💥 สำคัญ: เมื่อโหลด Navbar เสร็จแล้ว ค่อยเรียกใช้ฟังก์ชัน Hamburger
+                    if (elementId === 'navbar-placeholder') {
+                        setupHamburgerToggle();
+                    }
+                }
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    }
+    
+    // โหลด Navbar และ Footer
+    loadHTML('navbar-placeholder', 'navbar.html');
+    loadHTML('footer-placeholder', 'footer.html');
+    
+    
+    // 💥 ฟังก์ชันสำหรับจัดการ Hamburger Toggle (ต้องเรียกใช้หลังโหลด HTML เสร็จ)
+    function setupHamburgerToggle() {
+        // โค้ด Hamburger Toggle เดิมของคุณ (ปรับปรุงให้ใช้ Class/ID ที่ถูกต้อง)
+        const hamburger = document.querySelector('.hamburger-icon');
+        const navWrapper = document.getElementById('myMenu'); 
+        
+        if (hamburger && navWrapper) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navWrapper.classList.toggle('menu-active');
+            });
+        }
+    }
+    
+});
+
+// *หมายเหตุ: ถ้าคุณยังใช้ onclick="toggleHam(this)" ใน HTML ให้เปลี่ยนเป็นใช้ Event Listener ใน JS ตามโค้ดนี้แทนครับ
