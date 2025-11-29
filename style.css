@@ -764,3 +764,45 @@ a {
     /* สถานะสุดท้าย: กลับไปตำแหน่งเดิม (0px) */
     transform: translateY(0); 
 }
+
+/* -------------------------------------------..........................................................................................--------- */
+/* about-page*/
+/* ---------------------------------------------------- */
+.hero-about {
+    text-align: start;
+    /* จำกัดความกว้างเนื้อหาให้อยู่ในขอบเขตที่เหมาะสม */
+  
+    width: 100%;
+    margin: 0 auto; 
+    
+    /* เพิ่ม Padding ด้านบนและด้านล่าง เพื่อเว้นช่องว่าง */
+    padding: 30px; 
+    background-color: white;
+    border-top: 2px solid var(--text-color-dark); /* 2px หนา, ชนิด solid, สีดำ */
+    border-bottom: 2px solid var(--text-color-dark); /* 2px หนา, ชนิด solid, สีดำ */
+}
+
+.hero-about h1 {
+    /* กำหนดขนาดฟอนต์เริ่มต้นสำหรับ Desktop */
+    font-size: 6vw; 
+    line-height: 0.9; /* ชิดบรรทัดให้ใกล้กัน */
+    font-weight: 900;
+    text-transform: uppercase;
+    /* สีดำ/เข้มสำหรับ "TRAIN HARD." */
+    color: var(--text-color-dark);
+   
+}
+
+
+@media (max-width: 799px) { 
+    .hero-about h1 {
+        /* ✅ ยกเลิกการบังคับให้อยู่บรรทัดเดียว */
+        white-space: normal; 
+        
+        /* ✅ สั่งให้ h1 กลับมาขยายเต็มความกว้างเพื่อจัดกึ่งกลาง */
+        display: block; 
+        
+        font-size: 10vw; /* อาจต้องปรับขนาดฟอนต์ให้ใหญ่ขึ้นอีกนิดใน Mobile */
+    }
+    
+}
