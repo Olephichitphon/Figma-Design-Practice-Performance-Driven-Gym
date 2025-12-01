@@ -1080,6 +1080,75 @@ body {
     margin-top: auto; 
     /* ถ้าเป็นแท็ก p หรือ div ต้องปรับให้เป็น block */
 }
+
+/* สไตล์พื้นฐานของการ์ดแต่ละใบ */
+.reserve-content > div {
+    /* กำหนดชื่อ Class หลักสำหรับการ์ดทั้งหมด (.strentgh, .condition, .community) */
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เงาเริ่มต้น */
+    text-align: center;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* 💥 สำหรับเอฟเฟกต์เด้ง */
+    /* 💥 เพิ่ม background-color ใน Transition */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* 💥 เอฟเฟกต์เด้งเมื่อโฉบเมาส์ (LIFT / POP-UP EFFECT) */
+.reserve-content > div:hover {
+    /* ยกการ์ดขึ้นเล็กน้อย */
+    transform: translateY(-20px); 
+    
+    /* ทำให้เงาเข้มขึ้นและขยายใหญ่ขึ้นเพื่อสร้างมิติ */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
+    /* 💥 เปลี่ยนสีพื้นหลังเมื่อ Hover */
+    background-color:var(--cta-color);
+}
+
+.reserve-content .btn:hover {
+    background-color: darken(var(--primary-color, #333), 10%); /* ทำให้สีเข้มขึ้นเมื่อโฉบเมาส์ */
+}
+
+/* สไตล์สำหรับหัวข้อ */
+.reserve-content h2 {
+    color: var(--secondary-color, #333);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color, #333);
+    padding-bottom: 10px;
+}
+
+/* สไตล์สำหรับปุ่ม Reserve */
+.reserve-content .btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: var(--primary-color, #333); /* ใช้สีหลักหรือสีดำเป็นค่าสำรอง */
+    color: var( --cta-hover);
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: background-color 0.2s;
+    /* 💥 เพิ่ม transition สำหรับ transform ด้วย */
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.reserve-content .btn:hover {
+    background-color: #555555; /* ทำให้สีเข้มขึ้นเมื่อโฉบเมาส์ */
+    
+    /* 2. ทำให้ปุ่มเด้งขึ้นเล็กน้อย */
+    transform: translateY(-2px); 
+    
+    /* 3. (ทางเลือก) อาจเพิ่มเงาเล็กน้อยเพื่อให้ดูมีมิติมากขึ้น */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* สไตล์สำหรับหัวข้อ */
+.reserve-content h2 {
+    color: var(--secondary-color, #333);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--primary-color, #333);
+    padding-bottom: 10px;
+}
 /* --- 6. Responsive (ปรับให้แสดงเป็นคอลัมน์เดียวบนมือถือ) --- */
 @media (max-width: 768px) {
     .reserve-content {
