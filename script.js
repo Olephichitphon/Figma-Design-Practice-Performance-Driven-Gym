@@ -1,35 +1,35 @@
 // ----------------------------------------------------
-// 1. ฟังก์ชันสำหรับจัดการ Hamburger Menu (ใช้ Event Listener)
+// 1. Hamburger Menu (ใช้ร่วมกับ onclick="toggleHam(this)")
 // ----------------------------------------------------
-function setupHamburgerToggle() {
-    // เลือกปุ่ม Hamburger (ใช้ Class "ham-menu" ตามใน HTML)
-    const hamburger = document.querySelector('.ham-menu'); 
-    // เลือก Menu Wrapper (ใช้ ID "myMenu")
-    const navWrapper = document.getElementById('myMenu'); 
-    
-    if (hamburger && navWrapper) {
-        // ใช้ Event Listener แทน onclick
-        hamburger.addEventListener('click', () => {
-            // A. เปลี่ยนรูปทรง Hamburger (ใช้ Class 'change')
-            hamburger.classList.toggle('change'); 
+function toggleHam(x) {
+    // 1. จัดการการเปลี่ยนสถานะของปุ่ม Hamburger (เพิ่ม/ลบ class "change")
+    x.classList.toggle("change");
 
-            // B. เปิด/ปิด Menu (ใช้ Class 'menu-active')
-            navWrapper.classList.toggle('menu-active');
-        });
+    // 2. จัดการการเปิด/ปิด Menu Wrapper
+    let myMenu = document.getElementById("myMenu");
+    
+    // โค้ดนี้ใช้การแทนที่ className ทั้งหมด (วิธีเก่า)
+    if (myMenu.className === "nav-wrapper") {
+        myMenu.className += " menu-active"; // เปิด Menu: nav-wrapper menu-active
+    } else {
+        myMenu.className = "nav-wrapper"; // ปิด Menu: nav-wrapper
     }
 }
 
 
 // ----------------------------------------------------
-// 2. ฟังก์ชันสำหรับ Scroll Reveal Animation (Intersection Observer)
+// 2. Scroll Reveal Animation (Intersection Observer)
 // ----------------------------------------------------
-function setupScrollReveal() {
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // กำหนดตัวเลือกสำหรับ Observer
     const observerOptions = {
-        root: null, 
+        root: null, // ตรวจจับกับ Viewport (หน้าจอผู้ใช้)
         rootMargin: '0px',
-        threshold: 0.1 
+        threshold: 0.1 // เมื่อ Element เข้ามาในหน้าจอ 10% ให้เริ่มทำงาน
     };
 
+    // Function ที่จะถูกเรียกเมื่อ Element เข้า/ออกจาก Viewport
     function handleIntersection(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -42,54 +42,47 @@ function setupScrollReveal() {
     }
 
     const observer = new IntersectionObserver(handleIntersection, observerOptions);
+
+    // เลือก Element ทั้งหมดที่มี Class ชื่อ .scroll-reveal
     const elementsToReveal = document.querySelectorAll('.scroll-reveal');
     
+    // เริ่มสั่งให้ Observer ตรวจจับ Element เหล่านี้
     elementsToReveal.forEach(element => {
         observer.observe(element);
     });
-}
+});
 
 
+/*...............................................................................................*/
 // ----------------------------------------------------
-// 3. ฟังก์ชันสำหรับโหลด Navbar/Footer (ใช้ Fetch API)
-// ----------------------------------------------------
-function loadHTML(elementId, filePath) {
-    fetch(filePath)
-        .then(response => {
-            if (!response.ok) {
-                // ตรวจจับข้อผิดพลาด HTTP เช่น 404
-                throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
-            }
-            return response.text();
-        })
-        .then(htmlContent => {
-            const placeholder = document.getElementById(elementId);
-            if (placeholder) {
-                placeholder.innerHTML = htmlContent;
-                
-                // 💥 สำคัญ: เมื่อโหลด Navbar เสร็จแล้ว ค่อยเรียกใช้ฟังก์ชัน Hamburger
-                if (elementId === 'navbar-placeholder') {
-                    setupHamburgerToggle();
-                }
-            }
-        })
-        .catch(error => console.error('Error loading HTML:', error));
-}
-
-
-// ----------------------------------------------------
-// 4. จุดเริ่มต้น: เมื่อ DOM โหลดเสร็จ
+// 3. โค้ดสำหรับโหลด Navbar และ Footer (ใช้ Fetch API)
 // ----------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. เริ่มใช้งาน Scroll Reveal
-    setupScrollReveal();
-
-    // 2. โหลด Navbar และ Footer
-    // (หมายเหตุ: ใน index.html คุณได้ฝัง Navbar ไปแล้ว ดังนั้นการโหลดนี้จะใช้ในหน้าอื่นๆ)
+    
+    // ฟังก์ชันสำหรับดึงเนื้อหาจากไฟล์ HTML และแทรกใน Element ที่มี ID
+    function loadHTML(elementId, filePath) {
+        fetch(filePath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
+            .then(htmlContent => {
+                const placeholder = document.getElementById(elementId);
+                if (placeholder) {
+                    placeholder.innerHTML = htmlContent;
+                    
+                    // 💥 (ลบ setupHamburgerToggle() ออกจากตรงนี้ เพราะใช้ toggleHam(x) แล้ว)
+                    // (ไม่มีการเรียก setupHamburgerToggle ในโค้ดเดิมที่ใช้งานได้)
+                }
+            })
+            .catch(error => console.error('Error loading HTML:', error));
+    }
+    
+    // โหลด Navbar และ Footer
     loadHTML('navbar-placeholder', 'navbar.html');
     loadHTML('footer-placeholder', 'footer.html');
     
-    // 3. หากคุณไม่ได้ใช้การโหลด Navbar แยกในหน้า index.html 
-    //    คุณต้องเรียกใช้ Hamburger Toggle โดยตรงในหน้า index.html ด้วย
-    //    *คุณอาจต้องเรียกใช้ setupHamburgerToggle() ตรงนี้ในหน้า index.html*
+    // 💥 (ลบ setupHamburgerToggle() และโค้ดที่ไม่เกี่ยวข้องกับ toggleHam(x) ออกจากตรงนี้)
 });
